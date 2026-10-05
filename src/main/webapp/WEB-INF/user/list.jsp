@@ -1,0 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Danh sách User</title></head><body><h1>Danh sách User</h1><a href="users?action=new">Thêm mới User</a><table border="1" cellpadding="10"><thead><tr><th>ID</th><th>Tên</th><th>Email</th><th>Quốc gia</th><th>Thao tác</th></tr></thead><tbody>
+<c:forEach items="${users}" var="u"><tr><td>${u.id}</td><td><c:out value="${u.name}"/></td><td><c:out value="${u.email}"/></td><td><c:out value="${u.country}"/></td><td><a href="users?action=edit&amp;id=${u.id}">Edit</a><form action="users" method="POST"><input type="hidden" name="action" value="delete"><input type="hidden" name="id" value="${u.id}"><button type="submit">Xóa</button></form></td></tr></c:forEach>
+<c:if test="${empty users}"><tr><td colspan="5">Chưa có User.</td></tr></c:if></tbody></table></body></html>
